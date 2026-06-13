@@ -16,9 +16,9 @@ export const summary = "";
 
 export const stats: StatItem[] = [
     { value: "3+", label: "Years Experience" },
-    { value: "4+", label: "Production Apps Built" },
-    { value: "6", label: "APIs Integrated" },
-    { value: "40%", label: "PR Rework Reduced" },
+    { value: "30+", label: "Projects Delivered" },
+    { value: "65%", label: "Retention Improvement" },
+    { value: "10+", label: "Industries Served" },
 ];
 
 export const skillGroups: SkillGroup[] = [
