@@ -35,6 +35,12 @@ export interface Experience {
     tags: string[];
 }
 
+export interface ProjectLink {
+    label: string;
+    url: string;
+    platform: "web" | "playstore" | "appstore";
+}
+
 export interface Project {
     id: string;
     index: number;
@@ -45,6 +51,7 @@ export interface Project {
     techStack: string[];
     highlights: string[];
     color: string;
+    links?: ProjectLink[];
 }
 
 export interface Education {
@@ -69,6 +76,7 @@ export interface Certification {
     issuer: string;
     date: string;
     grade: string;
+    link?: string;
 }
 
 export interface ResumeData {

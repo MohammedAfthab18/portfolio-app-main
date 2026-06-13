@@ -4,7 +4,7 @@ import { notFound, useRouter } from "next/navigation";
 import { projects } from "@/data/resume";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Footer } from "@/components/layout/Footer";
-import { ArrowLeft, CheckCircle2, Cpu, Code2, ShieldAlert, Layers, Calendar, ExternalLink } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Cpu, Code2, ShieldAlert, Layers, Calendar, ExternalLink, Apple, Play, Globe } from "lucide-react";
 import gsap from "gsap";
 
 // Detailed architectural and challenge data to display on the project detail subpages
@@ -28,9 +28,9 @@ const PROJECT_DETAILS: Record<string, {
         year: "2026",
         client: "Webtrendz Technologies / Art Studio App",
         role: "Mobile & ML Engineer",
-        architecture: "Flutter application backing a localized Python/C++ TensorFlow Lite inference engine. Calculations run natively via platform channels. Hive NoSQL acts as the local storage layer for brand color catalogs.",
+        architecture: "Flutter application backed by a Node.js API server running the TensorFlow Lite matching classifier and Kubelka-Munk subtractive mixing computations. Calculations run natively over REST and offline local platform channels. Hive NoSQL acts as the local cache for catalog sync.",
         challenge: "Traditional digital color blending uses additive RGB models, which mix to white and fail to simulate physical pigments (which mix subtractively to black/brown). The engine had to run in real-time, offline, on budget smartphones.",
-        solution: "Engineered a custom physics mixing engine implementing the Kubelka-Munk light scattering and absorption coefficients. The model is optimized for mobile by utilizing lookup tables and a pruned TensorFlow Lite classifier running on-device for instant brand matching.",
+        solution: "Engineered a custom physics mixing engine implementing the Kubelka-Munk light scattering and absorption coefficients. The model runs on a Node.js backend server with API wrappers, leveraging a pruned TensorFlow Lite classifier for instant brand matching and lookup table caches.",
     },
     "thiruvel-academy": {
         year: "2025",
@@ -68,9 +68,17 @@ const PROJECT_DETAILS: Record<string, {
         year: "2025",
         client: "Webtrendz Technologies / Fintech Product",
         role: "Lead Mobile Developer",
-        architecture: "Clean Domain-Driven Flutter architecture structured around the BLoC pattern for predictable state transitions. Local storage is handled via Hive, a lightweight NoSQL key-value store, while remote synchronization links directly to Cloud Firestore with caching layers.",
+        architecture: "Clean Domain-Driven Flutter architecture backed by a Node.js backend API server for transactions, PDF/Excel generation, and Firestore synchronization. Mobile state transitions are managed using BLoC, and local persistence is handled by Hive.",
         challenge: "Ensuring 100% database consistency and reliable reporting offline-first. The app must run smoothly in poor connectivity zones, cache balance sheet calculations, and prevent conflict issues when multiple devices sync to the same ledger.",
-        solution: "Designed a local journal queue to store pending write operations. Synced transactions are checked against server timestamps using delta refresh, and conflict resolution is managed via server-authoritative timestamps. Reports are compiled locally using low-footprint PDF generators.",
+        solution: "Designed a local journal queue to store pending write operations. Synced transactions are checked against server timestamps using delta refresh, and conflict resolution is managed via server-authoritative timestamps. Reports are compiled on the Node.js backend using low-footprint PDF generators.",
+    },
+    "gadgets-masters": {
+        year: "2026",
+        client: "Webtrendz Technologies / Local Business Group",
+        role: "AI & Integrations Engineer",
+        architecture: "Multi-agent chatbot orchestrator linking Botpress (for instant messaging workflows) and Retell AI (for low-latency voice LLM connections). The middleware is built in TypeScript on Node.js and integrates with Make.com automation webhooks.",
+        challenge: "Conversational voice latency and business logic validation. AI agents easily hallucinate or book times outside operational hours, and parsing unstructured address or telephone strings into rigid database schemas is error-prone.",
+        solution: "Created a deterministic state-machine middleware that intercepts voice LLM transcripts. The middleware validates scheduling inputs against business operating rules and uses regex/LLM correction for phone numbers before calling calendar APIs.",
     }
 };
 
@@ -290,6 +298,35 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
 
                         {/* Right Column: Sidebar info */}
                         <div className="space-y-8">
+                            {/* Project Links */}
+                            {project.links && project.links.length > 0 && (
+                                <section className="bg-bg-card border border-border rounded-2xl p-6 hover:shadow-md transition-shadow duration-300 animate-fade-in" style={{ boxShadow: "var(--shadow-1)" }}>
+                                    <h3 className="t-label text-fg-3 mb-4">Live Links</h3>
+                                    <div className="flex flex-col gap-2.5">
+                                        {project.links.map((link) => {
+                                            const Icon = link.platform === "appstore" ? Apple : link.platform === "playstore" ? Play : Globe;
+                                            return (
+                                                <a
+                                                    key={link.url}
+                                                    href={link.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center justify-between gap-3 px-4 py-3 rounded-xl border border-border bg-bg hover:border-accent/30 hover:text-accent transition-all duration-200 group/link"
+                                                >
+                                                    <div className="flex items-center gap-2.5 min-w-0">
+                                                        <Icon className="w-5 h-5 shrink-0" style={{ color: project.color }} />
+                                                        <span className="text-sm font-semibold text-fg group-hover/link:text-accent transition-colors duration-200 truncate">
+                                                            {link.label}
+                                                        </span>
+                                                    </div>
+                                                    <ExternalLink className="w-4 h-4 text-fg-3 group-hover/link:text-accent transition-colors duration-200 shrink-0" />
+                                                </a>
+                                            );
+                                        })}
+                                    </div>
+                                </section>
+                            )}
+
                             {/* Tech Stack */}
                             <section className="bg-bg-card border border-border rounded-2xl p-6 hover:shadow-md transition-shadow duration-300 animate-fade-in" style={{ boxShadow: "var(--shadow-1)" }}>
                                 <h3 className="t-label text-fg-3 mb-4">Technologies & Stack</h3>

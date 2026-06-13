@@ -111,7 +111,7 @@ export function Projects() {
                     </div>
                     <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
                         <h2 className="t-h1 text-fg">Production Applications</h2>
-                        <p className="text-sm font-semibold text-fg-3 shrink-0">4 of 4 currently live</p>
+                        <p className="text-sm font-semibold text-fg-3 shrink-0">Live Case Studies</p>
                     </div>
                 </div>
 

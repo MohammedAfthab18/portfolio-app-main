@@ -18,7 +18,7 @@ export const summary = "Full Stack & Cross-Platform Software Engineer with 2+ ye
 
 export const stats: StatItem[] = [
     { value: "2+", label: "Years Experience" },
-    { value: "7+", label: "Production Apps Built" },
+    { value: "8+", label: "Production Apps Built" },
     { value: "8+", label: "APIs Integrated" },
     { value: "15+", label: "ERP Modules Developed" },
 ];
@@ -109,6 +109,9 @@ export const projects: Project[] = [
             "Implemented user authentication (bcrypt, keytar), secure credential storage, and seamless auto-updates (electron-updater)."
         ],
         color: "#2563EB",
+        links: [
+            { label: "Maker App", url: "https://makerapp.superidcards.com/", platform: "web" }
+        ]
     },
     {
         id: "gt-color-mixing-studio",
@@ -116,14 +119,14 @@ export const projects: Project[] = [
         title: "GT Color Mixing Studio",
         status: "Live",
         description: "Offline, AI-powered physical color mixing app for artists simulating subtractive pigment blending with on-device light spectrum calculations.",
-        detailedDescription: "An AI-powered offline Flutter application that bridges the gap between digital screen colors and real-world pigments. It implements two mixing engines: a high-fidelity Kubelka-Munk PigmentMixingEngine that models physical light reflection, absorption, and scattering of physical paint, and an RgbAverageMixingEngine for speed-efficient approximations. The application runs entirely offline using an on-device TensorFlow Lite model that allows users to capture an image and run instant color-matching inference. It supports a 5-source input pipeline to import colors (from image color extractors, palette databases, HSL color wheels, brand catalogs, or color pickers) and calculate the precise mixing ratios of commercial artist brands to replicate the target hue.",
-        techStack: ["Flutter", "Dart", "BLoC", "GetIt", "Hive NoSQL", "TensorFlow Lite", "Kubelka-Munk"],
+        detailedDescription: "An AI-powered offline Flutter application that bridges the gap between digital screen colors and real-world pigments. It implements two mixing engines: a high-fidelity Kubelka-Munk PigmentMixingEngine that models physical light reflection, absorption, and scattering of physical paint, and an RgbAverageMixingEngine for speed-efficient approximations. The application connects to a Node.js backend hosting the TensorFlow Lite model for color matching and pigment ratio calculations. It supports a 5-source input pipeline to import colors (from image color extractors, palette databases, HSL color wheels, brand catalogs, or color pickers) and calculate the precise mixing ratios of commercial artist brands to replicate the target hue.",
+        techStack: ["Flutter", "Dart", "Node.js", "BLoC", "GetIt", "Hive NoSQL", "TensorFlow Lite", "Kubelka-Munk"],
         highlights: [
             "Developed dual mixing algorithms: Kubelka-Munk PigmentMixingEngine for physical simulation and RgbAverageMixingEngine.",
             "Implemented linear RGB color space conversions with sRGB gamma correction for accurate paint blend representation.",
             "Built comprehensive color input pipeline supporting 5 sources (picker, color wheel, image upload, catalog, palette reuse).",
             "Designed reactive DDD hierarchical data model (Projects → Workspaces → Color Mixes → Palettes) using BLoC streams.",
-            "Optimized offline Hive database operations with lazy loading and local TensorFlow Lite on-device matching."
+            "Optimized offline Hive database operations with lazy loading and local TensorFlow Lite on-device matching, backed by a Node.js backend service."
         ],
         color: "#EA580C",
     },
@@ -143,6 +146,10 @@ export const projects: Project[] = [
             "Implemented media-rich course content viewer with PDF rendering, secure video playback, and screen capture protection."
         ],
         color: "#16A34A",
+        links: [
+            { label: "App Store", url: "https://apps.apple.com/in/app/thiruvel-academy/id1620869307", platform: "appstore" },
+            { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.web_trendz.thiruvelacademy&pcampaignid=web_share", platform: "playstore" }
+        ]
     },
     {
         id: "vms-jewellery-platform",
@@ -160,6 +167,12 @@ export const projects: Project[] = [
             "Integrated client applications with a Laravel REST API for live catalogue sync, order placements, and stock status updates."
         ],
         color: "#D97706",
+        links: [
+            { label: "Craft Cart (App Store)", url: "https://apps.apple.com/in/app/craft-cart/id1492994762", platform: "appstore" },
+            { label: "VMS Pro (App Store)", url: "https://apps.apple.com/in/app/pro-vms/id1477701020", platform: "appstore" },
+            { label: "Craft Cart (Play Store)", url: "https://play.google.com/store/apps/details?id=com.webtrendz.provms.craftcart&pcampaignid=web_share", platform: "playstore" },
+            { label: "VMS Pro (Play Store)", url: "https://play.google.com/store/apps/details?id=com.vardhamansilvers.provms916&pcampaignid=web_share", platform: "playstore" }
+        ]
     },
     {
         id: "daga-tvm-properties",
@@ -201,8 +214,8 @@ export const projects: Project[] = [
         title: "WT Books",
         status: "Live",
         description: "Flutter bookkeeping and transaction tracker featuring offline-first Hive caching and Cloud Firestore synchronization.",
-        detailedDescription: "WT Books is a cross-platform mobile bookkeeping and financial transaction manager designed for businesses. Developed with Flutter for high performance and native design fidelity on Android and iOS. The core architecture uses the BLoC pattern for clean separation of concerns, alongside GetIt for lightweight dependency injection. The app supports full offline-first functionality, storing records locally in Hive NoSQL and synchronizing with Cloud Firestore over the air using advanced delta refresh, fallback queries, and conflict-resolution algorithms. A reporting system enables users to export complex balance sheets, receipt records, and contact-specific statements to Excel and PDF formats, with automatic file compression and secure cloud attachment uploads.",
-        techStack: ["Flutter", "Dart", "Firebase Auth", "Cloud Firestore", "Firebase Storage", "Hive", "BLoC", "GetIt", "GoRouter"],
+        detailedDescription: "WT Books is a cross-platform mobile bookkeeping and financial transaction manager designed for businesses. Developed with Flutter for high performance and native design fidelity on Android and iOS. The app is backed by a Node.js API server for transactions, PDF/Excel generation, and synchronization. The core architecture uses the BLoC pattern for clean separation of concerns, alongside GetIt for lightweight dependency injection. The app supports full offline-first functionality, storing records locally in Hive NoSQL and synchronizing with Cloud Firestore over the air using advanced delta refresh, fallback queries, and conflict-resolution algorithms. A reporting system enables users to export complex balance sheets, receipt records, and contact-specific statements to Excel and PDF formats, with automatic file compression and secure cloud attachment uploads.",
+        techStack: ["Flutter", "Dart", "Node.js", "Firebase Auth", "Cloud Firestore", "Firebase Storage", "Hive", "BLoC", "GetIt", "GoRouter"],
         highlights: [
             "Built a production bookkeeping app in Flutter for managing businesses, transactions, attachments, and balance summaries.",
             "Implemented offline-first data access using Hive caching with Firestore sync, cache invalidation, and delta refreshes.",
@@ -212,6 +225,24 @@ export const projects: Project[] = [
         ],
         color: "#DB2777",
     },
+    {
+        id: "gadgets-masters",
+        index: 8,
+        title: "Gadgets Masters",
+        status: "Live",
+        description: "Automated the full customer intake, diagnosis, and scheduling pipeline by engineering a multi-modal AI booking system combining Botpress (text) and Retell AI (voice LLM).",
+        detailedDescription: "Gadgets Masters is a conversational AI agent designed for automated repair booking, scheduling, and diagnostic triage. It features a multi-modal interface that processes text inputs via Botpress and real-time voice calls via Retell AI (voice LLM integration). The system implements a custom state-machine in TypeScript that enforces business-logic compliance: it validates phone numbers against Australian formats, restricts scheduling to valid business hours, and performs live knowledge-base queries to quote accurate pricing based on device models. It integrates with Make.com webhooks to synchronize bookings with backend calendars and dispatch instant SMS booking confirmations.",
+        techStack: ["TypeScript", "Botpress", "Retell AI", "Make.com Webhooks", "Node.js"],
+        highlights: [
+            "Automated the full customer intake, diagnosis, and scheduling pipeline by engineering a multi-modal AI booking system combining Botpress (text) and Retell AI (voice LLM), eliminating manual agent handling.",
+            "Enforced business-logic reliability by designing a deterministic state-machine with strict prompt engineering & validating Australian phone formats, enforcing business-hour scheduling, and retrieving real-time knowledge-base pricing.",
+            "Ensured clean backend data ingestion by building TypeScript execution layers to parse unstructured user inputs into structured JSON payloads, triggering automated SMS reminders via Make.com webhooks."
+        ],
+        color: "#7C3AED",
+        links: [
+            { label: "Gadgets Masters", url: "https://gadgetsmaster.com.au/", platform: "web" }
+        ]
+    }
 ];
 
 export const additionalWork = [
@@ -247,18 +278,21 @@ export const certifications: Certification[] = [
         issuer: "DeepLearning.AI / Coursera",
         date: "February 2026",
         grade: "Grade: 100%",
+        link: "https://coursera.org/share/dc9413b23a627165cf54f01a201a90f8",
     },
     {
         name: "Supervised Machine Learning: Regression & Classification",
         issuer: "DeepLearning.AI / Coursera",
         date: "February 2026",
         grade: "Grade: 100%",
+        link: "https://coursera.org/share/1a9928336c9cc832b4e0a62f0a9c698a",
     },
     {
         name: "Programming in Python",
         issuer: "Meta / Coursera",
         date: "November 2022",
         grade: "Grade: 98.87%",
+        link: "https://coursera.org/share/d16912935ebf3155c7824b213ad924f3",
     }
 ];
 

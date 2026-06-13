@@ -151,7 +151,7 @@ body {
 /* ─── Layout ────────────────────────────────────────────────────── */
 .wrap {
     width: 100%;
-    max-width: 1600px;
+    max-width: 1440px;
     margin: 0 auto;
     padding-inline: clamp(1rem, 6vw, 4.5rem);
 }

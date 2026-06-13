@@ -62,27 +62,49 @@ export function PublicationsAndCertifications() {
                             Professional Certifications
                         </h3>
                         <div className="space-y-4">
-                            {certifications && certifications.map((cert, i) => (
-                                <div
-                                    key={i}
-                                    className="flex items-center gap-4 p-4 rounded-xl border border-border bg-bg-card hover:border-border-2 transition-all duration-300 hover:shadow-sm"
-                                >
-                                    <div className="w-10 h-10 rounded-xl bg-accent-t flex items-center justify-center shrink-0">
-                                        <Award className="w-5 h-5 text-accent" />
+                            {certifications && certifications.map((cert, i) => {
+                                const CardContent = (
+                                    <>
+                                        <div className="w-10 h-10 rounded-xl bg-accent-t flex items-center justify-center shrink-0">
+                                            <Award className="w-5 h-5 text-accent" />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <h4 className="font-bold text-sm text-fg leading-tight truncate group-hover:text-accent transition-colors duration-200">
+                                                {cert.name}
+                                            </h4>
+                                            <p className="text-xs text-fg-2 mt-0.5 truncate">
+                                                {cert.issuer}
+                                            </p>
+                                        </div>
+                                        <div className="shrink-0 text-xs font-extrabold px-2.5 py-1 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900 text-emerald-600 dark:text-emerald-400 rounded-lg whitespace-nowrap">
+                                            {cert.grade}
+                                        </div>
+                                    </>
+                                );
+
+                                if (cert.link) {
+                                    return (
+                                        <a
+                                            key={i}
+                                            href={cert.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-4 p-4 rounded-xl border border-border bg-bg-card hover:border-accent/40 transition-all duration-300 hover:shadow-sm group cursor-pointer"
+                                        >
+                                            {CardContent}
+                                        </a>
+                                    );
+                                }
+
+                                return (
+                                    <div
+                                        key={i}
+                                        className="flex items-center gap-4 p-4 rounded-xl border border-border bg-bg-card"
+                                    >
+                                        {CardContent}
                                     </div>
-                                    <div className="min-w-0 flex-1">
-                                        <h4 className="font-bold text-sm text-fg leading-tight truncate">
-                                            {cert.name}
-                                        </h4>
-                                        <p className="text-xs text-fg-2 mt-0.5 truncate">
-                                            {cert.issuer}
-                                        </p>
-                                    </div>
-                                    <div className="shrink-0 text-xs font-extrabold px-2.5 py-1 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900 text-emerald-600 dark:text-emerald-400 rounded-lg whitespace-nowrap">
-                                        {cert.grade}
-                                    </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
