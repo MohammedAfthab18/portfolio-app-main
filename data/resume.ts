@@ -1,21 +1,21 @@
 import type { ContactInfo, SkillGroup, Experience, Project, Education, StatItem, ResumeData } from "@/types";
 
 export const contact: ContactInfo = {
-    name: "Mohammed Afthab",
-    firstName: "Mohammed",
-    lastName: "Afthab",
-    title: "Full Stack Developer",
-    email: "afthab2282@gmail.com",
-    phone: "+91 6383475532",
-    linkedin: "https://www.linkedin.com/in/mohammed-afthab-4a8a72220/",
+    name: "Lalithapriya Kumaravel",
+    firstName: "Lalithapriya",
+    lastName: "Kumaravel",
+    title: "UI/UX Designer",
+    email: "lalithapriyakumaravel@gmail.com",
+    phone: "+91 8925490563",
+    linkedin: "https://www.linkedin.com/in/lalithapriyakumaravel/",
     location: "Tiruvannamalai, Tamil Nadu, India",
     openToRelocate: true,
 };
 
-export const summary = "Full Stack Developer and Technical Lead with 4 years of hands-on experience building production ERP, CRM, and SaaS web applications. I own the full development lifecycle — API architecture, database schema design, React JS dashboards, third-party integrations, CI/CD pipelines, and team mentorship.";
+export const summary = "";
 
 export const stats: StatItem[] = [
-    { value: "4+", label: "Years Experience" },
+    { value: "3+", label: "Years Experience" },
     { value: "4+", label: "Production Apps Built" },
     { value: "6", label: "APIs Integrated" },
     { value: "40%", label: "PR Rework Reduced" },
@@ -23,44 +23,40 @@ export const stats: StatItem[] = [
 
 export const skillGroups: SkillGroup[] = [
     {
-        category: "Backend",
-        skills: ["Laravel", "PHP (OOP)", "RESTful API Design", "Eloquent ORM", "MVC Architecture", "Service Layer Design", "JWT Authentication", "Webhook Integration"],
+        category: "Design Tools",
+        skills: ["Figma, Framer, Webflow, Adobe XD, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, Blender"],
     },
     {
-        category: "Frontend",
-        skills: ["React JS", "JavaScript (ES6+)", "Redux", "React Hooks", "Event Bus Pattern", "HTML5", "CSS3", "Bootstrap 5", "Responsive UI"],
+        category: "UX Competencies",
+        skills: ["UX Research, Interaction Design, Information Architecture, User Flows, Journey Mapping, Wireframing, Prototyping, Usability Testing, Heuristic Evaluation, A/B Testing, Accessibility (WCAG)"],
     },
     {
-        category: "Database",
-        skills: ["MySQL", "Database Schema Design", "Query Optimisation", "Indexing", "Relational Database Management"],
+        category: "Design Systems",
+        skills: ["Component Libraries, Design Tokens, Material Design, Responsive Design, Visual Hierarchy, Mobile-First, Design"],
     },
     {
-        category: "Integrations",
-        skills: ["Ozonetel (CTI)", "Twilio (WhatsApp)", "SendGrid (Email)", "QuickBooks (Invoicing)", "AskEva", "Buoy Insurance API"],
+        category: "Technical",
+        skills: ["HTML5, CSS3, JavaScript, WordPress, Developer Handoff (Figma Inspect)"],
     },
     {
-        category: "Mobile & CMS",
-        skills: ["Flutter", "Dart", "Android Development", "WordPress (Custom Themes & Plugins)", "Joomla"],
+        category: "Emerging",
+        skills: ["AI-Assisted Design Workflows, MCP-Based Design Systems, Prompt Engineering for UX"],
     },
     {
-        category: "DevOps & Tools",
-        skills: ["Git", "GitHub", "Jenkins (CI/CD)", "Agile / Scrum", "Sprint Planning", "cPanel Deployment", "SSL Configuration", "Code Review"],
-    },
-    {
-        category: "Leadership",
-        skills: ["Technical Mentoring", "Team Lead (4 devs)", "Architecture Decision-Making", "Cross-functional Collaboration"],
+        category: "Methodologies",
+        skills: ["Human-Centered Design, Agile, Cross-functional Collaboration, Product Strategy, Design Thinking"],
     },
 ];
 
 export const experiences: Experience[] = [
     {
         id: "webtrendz",
-        role: "Senior Full Stack Developer",
+        role: "UI/UX Designer",
         company: "Webtrendz Technologies",
         companyFull: "Webtrendz Technologies India Private Limited",
         location: "Tiruvannamalai, Tamil Nadu",
-        duration: "June 2022 – Present",
-        tenure: "3 yrs 9 mos",
+        duration: "March 2023 – Present",
+        tenure: "3 yrs 2 mos",
         type: "Full-time",
         highlights: [
             "Designed and delivered 4+ production ERP and CRM web applications from scratch using Laravel — owning RESTful API design, business logic, Eloquent ORM, and MySQL database schema across 10+ relational modules per project.",
