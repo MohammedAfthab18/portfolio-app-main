@@ -5,13 +5,12 @@ import { cn } from "@/lib/utils";
 import type { SkillGroup } from "@/types";
 
 const CAT_COLORS: Record<string, string> = {
-    "Backend": "#4F46E5",
+    "Mobile": "#DB2777",
     "Frontend": "#0D9488",
-    "Database": "#EA580C",
-    "Integrations": "#9333EA",
-    "Mobile & CMS": "#DB2777",
+    "Desktop": "#14B8A6",
+    "Backend": "#4F46E5",
+    "AI/ML": "#EA580C",
     "DevOps & Tools": "#D97706",
-    "Leadership": "#16A34A",
 };
 
 function SkillRow({ g, index }: { g: SkillGroup; index: number }) {
@@ -23,7 +22,7 @@ function SkillRow({ g, index }: { g: SkillGroup; index: number }) {
             className={cn(
                 "reveal grid sm:grid-cols-[160px_1fr] gap-3 sm:gap-6",
                 "px-5 sm:px-6 py-5 border-b border-border last:border-0",
-                "hover:bg-bg-2 transition-colors duration-200",
+                "hover:bg-bg-2/30 transition-colors duration-200",
                 visible && "in"
             )}
             style={{ transitionDelay: `${index * 55}ms` }}
@@ -61,22 +60,22 @@ export function Skills() {
                     <h2 className="t-h1 text-fg">Technical Skills</h2>
                 </div>
 
-                <div className="rounded-2xl border border-border bg-bg-card overflow-hidden" style={{ boxShadow: "var(--shadow-2)" }} >
+                <div className="rounded-2xl border border-border bg-bg-card overflow-hidden shadow-sm" style={{ boxShadow: "var(--shadow-2)" }} >
                     {skillGroups.map((g, i) => (
                         <SkillRow key={g.category} g={g} index={i} />
                     ))}
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-border bg-bg-card px-5 sm:px-6 py-6 overflow-hidden" style={{ boxShadow: "var(--shadow-1)" }} >
-                    <p className="t-label text-fg-3 mb-5">6 Production API Integrations Shipped</p>
+                <div className="mt-6 rounded-2xl border border-border bg-bg-card px-5 sm:px-6 py-6 overflow-hidden shadow-sm" style={{ boxShadow: "var(--shadow-1)" }} >
+                    <p className="t-label text-fg-3 mb-5">Production SDK & API Integrations Shipped</p>
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                         {[
-                            { name: "Ozonetel", note: "VoIP / CTI", color: "#4F46E5" },
-                            { name: "Twilio", note: "WhatsApp", color: "#0D9488" },
-                            { name: "SendGrid", note: "Email", color: "#EA580C" },
-                            { name: "QuickBooks", note: "Invoicing", color: "#16A34A" },
-                            { name: "AskEva", note: "WA Notifications", color: "#9333EA" },
-                            { name: "Buoy", note: "Insurance API", color: "#DB2777" },
+                            { name: "Stripe", note: "3D Secure Pay", color: "#635BFF" },
+                            { name: "Razorpay", note: "Indian Gateway", color: "#008ECF" },
+                            { name: "Apple IAP", note: "In-App Purchases", color: "#A2AAAD" },
+                            { name: "TensorFlow Lite", note: "On-Device ML", color: "#FF6F00" },
+                            { name: "Retell AI", note: "Low-latency Voice", color: "#4F46E5" },
+                            { name: "Botpress", note: "Chat Architectures", color: "#0D9488" },
                         ].map(({ name, note, color }) => (
                             <div key={name} className="flex flex-col gap-1.5 p-3 rounded-xl border border-border bg-bg-2 hover:border-border-2 transition-colors duration-200 min-w-0" >
                                 <div className="h-1 w-8 rounded-full shrink-0" style={{ background: color }} />

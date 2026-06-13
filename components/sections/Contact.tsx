@@ -13,7 +13,7 @@ export function Contact() {
             <div className="wrap">
                 <div ref={rH} className={cn("reveal mb-8", vH && "in")}>
                     <div className="flex items-center gap-3">
-                        <span className="t-label text-accent">06</span>
+                        <span className="t-label text-accent">07</span>
                         <div className="h-px w-10 bg-accent" />
                         <span className="t-label text-fg-3">Contact</span>
                     </div>
@@ -49,7 +49,7 @@ export function Contact() {
                         </div>
                     </a>
 
-                    <div className="mt-10 grid sm:grid-cols-3 gap-4">
+                    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         {[
                             {
                                 label: "Phone",
@@ -59,15 +59,21 @@ export function Contact() {
                             },
                             {
                                 label: "LinkedIn",
-                                val: "Mohammed Afthab",
+                                val: "Mohammed Afthab N",
                                 href: contact.linkedin,
                                 ext: true,
                             },
                             {
-                                label: "Location",
-                                val: contact.location,
-                                href: "#",
-                                ext: false,
+                                label: "GitHub",
+                                val: "MohammedAfthab18",
+                                href: contact.github || "#",
+                                ext: true,
+                            },
+                            {
+                                label: "ResearchGate",
+                                val: "Mohammed Afthab N",
+                                href: contact.researchgate || "#",
+                                ext: true,
                             },
                         ].map(({ label, val, href, ext }) => (
                             <div
@@ -82,7 +88,7 @@ export function Contact() {
                                     className="text-sm font-semibold text-fg group-hover:text-accent transition-colors duration-200 leading-snug break-words block"
                                 >
                                     {val}
-                                    {ext && <span className="ml-0.5 text-fg-3 group-hover:text-accent"> ↗</span>}
+                                    {ext && <span className="ml-0.5 text-fg-3 group-hover:text-accent font-normal text-xs"> ↗</span>}
                                 </a>
                             </div>
                         ))}

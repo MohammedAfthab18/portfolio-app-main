@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useReveal } from "@/hooks/useScrollAnimation";
 import { projects } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -8,13 +9,15 @@ function ProjectRow({ p }: { p: Project }) {
     const { ref, visible } = useReveal({ threshold: 0.08 });
 
     return (
-        <article ref={ref}
+        <Link
+            href={`/projects/${p.id}`}
+            ref={ref as any}
             className={cn(
-                "reveal group",
+                "reveal group block cursor-pointer",
                 "grid lg:grid-cols-[56px_1fr_auto] gap-4 lg:gap-8",
                 "px-5 sm:px-6 py-7 sm:py-8",
                 "border-b border-border last:border-0",
-                "hover:bg-bg-2 transition-colors duration-250",
+                "hover:bg-bg-2/50 transition-colors duration-250",
                 visible && "in"
             )}
             style={{ transitionDelay: `${(p.index - 1) * 80}ms` }}
@@ -85,12 +88,12 @@ function ProjectRow({ p }: { p: Project }) {
 
             <div className="hidden lg:flex items-start pt-1 shrink-0">
                 <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-fg-3 group-hover:border-accent group-hover:text-accent transition-all duration-300">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">
                         <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
                 </div>
             </div>
-        </article>
+        </Link>
     );
 }
 
@@ -112,7 +115,7 @@ export function Projects() {
                     </div>
                 </div>
 
-                <div className="bg-bg-card rounded-2xl border border-border overflow-hidden" style={{ boxShadow: "var(--shadow-2)" }} >
+                <div className="bg-bg-card rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300" style={{ boxShadow: "var(--shadow-2)" }} >
                     {projects.map(p => <ProjectRow key={p.id} p={p} />)}
                 </div>
             </div>

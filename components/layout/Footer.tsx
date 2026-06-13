@@ -9,12 +9,12 @@ export function Footer() {
                     <span className="font-semibold text-fg">{contact.name}</span>
                 </p>
                 
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 flex-wrap justify-center">
                     <a
                         href={`mailto:${contact.email}`}
                         className="text-sm text-fg-2 hover:text-accent transition-colors duration-200"
                     >
-                        {contact.email}
+                        Email
                     </a>
 
                     <a
@@ -25,6 +25,28 @@ export function Footer() {
                     >
                         LinkedIn ↗
                     </a>
+
+                    {contact.github && (
+                        <a
+                            href={contact.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-fg-2 hover:text-accent transition-colors duration-200"
+                        >
+                            GitHub ↗
+                        </a>
+                    )}
+
+                    {contact.researchgate && (
+                        <a
+                            href={contact.researchgate}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-fg-2 hover:text-accent transition-colors duration-200"
+                        >
+                            ResearchGate ↗
+                        </a>
+                    )}
                 </div>
             </div>
         </footer>

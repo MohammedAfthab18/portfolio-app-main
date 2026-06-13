@@ -6,6 +6,8 @@ export interface ContactInfo {
     email: string;
     phone: string;
     linkedin: string;
+    github?: string;
+    researchgate?: string;
     location: string;
     openToRelocate: boolean;
 }
@@ -39,6 +41,7 @@ export interface Project {
     title: string;
     status: "Live" | "Archived" | "In Progress";
     description: string;
+    detailedDescription?: string;
     techStack: string[];
     highlights: string[];
     color: string;
@@ -53,6 +56,21 @@ export interface Education {
     grade: string;
 }
 
+export interface Publication {
+    title: string;
+    publisher: string;
+    date: string;
+    description: string;
+    link: string;
+}
+
+export interface Certification {
+    name: string;
+    issuer: string;
+    date: string;
+    grade: string;
+}
+
 export interface ResumeData {
     contact: ContactInfo;
     summary: string;
@@ -62,6 +80,8 @@ export interface ResumeData {
     projects: Project[];
     additionalWork: string[];
     education: Education[];
+    publications?: Publication[];
+    certifications?: Certification[];
 }
 
 export type NavLink = { label: string; href: string };

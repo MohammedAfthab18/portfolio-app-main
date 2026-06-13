@@ -121,8 +121,7 @@ body {
 
 /* ─── Type scale ────────────────────────────────────────────────── */
 .t-display {
-    font-size: clamp(3rem, 10vw, 8rem);
-    /* tightened min so Umapathi fits on 320px */
+    font-size: clamp(2.5rem, 7.5vw, 5.5rem);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.04em;
@@ -152,10 +151,9 @@ body {
 /* ─── Layout ────────────────────────────────────────────────────── */
 .wrap {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding-inline: clamp(1rem, 5vw, 3.5rem);
-    /* reduced min from 1.25 → 1rem for 320px phones */
+    padding-inline: clamp(1rem, 6vw, 4.5rem);
 }
 
 /* Smaller vertical rhythm on mobile, comfortable on desktop */

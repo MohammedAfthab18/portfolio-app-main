@@ -46,23 +46,22 @@ export function About() {
                     <div className="space-y-4 text-[15px] text-fg-2 leading-relaxed min-w-0">
                         <p>
                             Based in{" "}
-                            <strong className="text-fg font-semibold">{contact.location}</strong> with 4 years
-                            of hands-on experience, I specialize in owning the complete lifecycle of web
-                            application development — from designing relational MySQL schemas and RESTful API
-                            contracts to building production React JS admin dashboards and configuring
-                            Jenkins CI/CD pipelines.
+                            <strong className="text-fg font-semibold">{contact.location}</strong> with 2+ years
+                            of production experience, I specialize in owning the complete lifecycle of scalable
+                            applications — spanning cross-platform mobile apps (Flutter), interactive web frontends
+                            (React.js), desktop platforms (Electron.js), and serverless backends (Node.js/Laravel).
                         </p>
                         <p>
-                            As Technical Lead I introduced an{" "}
-                            <strong className="text-fg font-semibold">Event Bus architecture</strong> across
-                            React JS frontends that replaced Redux and cut boilerplate by 30%. I mentor 4
-                            junior developers through structured code reviews, which reduced pull-request
-                            rework by 40% and shortened sprint delivery cycles within 3 months.
+                            I have a proven record of leading complex migrations and integrations, such as upgrading
+                            a live 4-app suite from Flutter 2 to 3, and building secure multi-platform payment flows
+                            via Stripe, Razorpay, and Apple In-App Purchases. I prioritize performance optimizations,
+                            utilizing join-optimized queries, lazy-loaded architectures, and on-device machine
+                            learning with TensorFlow Lite to create responsive offline-first tools.
                         </p>
                         <p>
-                            Beyond core full stack work: custom WordPress themes and plugins for 5+ client
-                            sites, Flutter/Dart features shipped to an Android app, and Joomla CMS migrations
-                            completed with zero data loss.
+                            In addition to engineering, I am a published researcher in deep-learning-based EEG
+                            emotion classification. I focus on writing maintainable, clean codebases using design
+                            patterns like BLoC, GetX, and Repository to build products that deliver high business value.
                         </p>
 
                         <div className="pt-5 border-t border-border">
@@ -85,11 +84,11 @@ export function About() {
                             </div>
                             <ul className="divide-y divide-border">
                                 {[
-                                    { label: "Role", val: "Senior Full Stack Dev" },
+                                    { label: "Role", val: "Full Stack Developer" },
                                     { label: "Company", val: "Webtrendz Technologies" },
-                                    { label: "Duration", val: "June 2022 – Present" },
-                                    { label: "Tenure", val: "4 years" },
-                                    { label: "Team", val: "Lead of 4 developers" },
+                                    { label: "Duration", val: "Aug 2024 – Present" },
+                                    { label: "Tenure", val: "1 yr 10 mos" },
+                                    { label: "Team", val: "Cross-Platform Engineer" },
                                     { label: "Location", val: contact.location },
                                     { label: "Relocate", val: "Open — immediately" },
                                 ].map(({ label, val }) => (

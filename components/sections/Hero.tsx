@@ -1,15 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { contact, stats } from "@/data/resume";
 import { cn } from "@/lib/utils";
+import gsap from "gsap";
 
 const STACK = [
-    "Laravel", "React JS", "MySQL", "REST API", "Jenkins", "PHP OOP",
-    "Eloquent ORM", "Redux", "JWT Auth", "Git", "Agile / Scrum", "Flutter",
-    "WordPress", "Twilio", "SendGrid", "QuickBooks", "cPanel", "CI/CD",
+    "Flutter", "React.js", "Electron.js", "Node.js", "Laravel", "REST API",
+    "BLoC", "GetX", "Redux Toolkit", "TypeScript", "Hive NoSQL", "Firebase",
+    "TensorFlow Lite", "Stripe", "Razorpay", "Apple IAP", "Formik", "Yup",
+    "ApexCharts", "Electron Builder", "Konva.js", "Git", "Make.com"
 ];
 
-/* Marquee rendered OUTSIDE the wrap div so it spans full width — no negative margins */
 function Marquee() {
     const doubled = [...STACK, ...STACK];
     return (
@@ -27,23 +28,54 @@ function Marquee() {
 }
 
 export function Hero() {
-    const [mounted, setMounted] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        const t = setTimeout(() => setMounted(true), 60);
-        return () => clearTimeout(t);
+        // GSAP entry transitions
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                ".gsap-reveal",
+                { opacity: 0, y: 24 },
+                { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, ease: "power3.out" }
+            );
+
+            gsap.fromTo(
+                ".gsap-scale-reveal",
+                { opacity: 0, scale: 0.95 },
+                { opacity: 1, scale: 1, duration: 0.9, delay: 0.15, ease: "back.out(1.2)" }
+            );
+
+            // Parallax movement on background glow based on mouse movements
+            const handleMouseMove = (e: MouseEvent) => {
+                const { clientX, clientY } = e;
+                const xVal = (clientX / window.innerWidth - 0.5) * 45;
+                const yVal = (clientY / window.innerHeight - 0.5) * 45;
+
+                gsap.to(".hero-glow-bg", {
+                    x: xVal,
+                    y: yVal,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            };
+
+            window.addEventListener("mousemove", handleMouseMove);
+            return () => window.removeEventListener("mousemove", handleMouseMove);
+        }, sectionRef);
+
+        return () => ctx.revert();
     }, []);
 
-    const anim = (d: number) => ({
-        opacity: mounted ? 1 : 0,
-        transform: mounted ? "none" : "translateY(20px)",
-        transition: `opacity .7s cubic-bezier(.22,1,.36,1) ${d}ms, transform .7s cubic-bezier(.22,1,.36,1) ${d}ms`,
-    });
-
     return (
-        <section aria-label="Introduction" className="relative min-h-screen flex flex-col justify-center pb-0 overflow-x-hidden" >
+        <section
+            ref={sectionRef}
+            aria-label="Introduction"
+            className="relative min-h-screen flex flex-col justify-center pb-0 overflow-x-hidden"
+        >
+            {/* Parallax background glow */}
             <div
                 aria-hidden
-                className="pointer-events-none absolute top-0 right-0 w-[min(700px,100vw)] h-[500px]"
+                className="pointer-events-none absolute top-0 right-0 w-[min(700px,100vw)] h-[500px] hero-glow-bg"
                 style={{
                     background:
                         "radial-gradient(ellipse at top right, rgba(79,70,229,0.08) 0%, transparent 65%)",
@@ -53,8 +85,9 @@ export function Hero() {
             <div className="wrap pt-28 pb-0">
                 <div className="grid lg:grid-cols-[1fr_400px] gap-10 lg:gap-16 items-center">
                     <div className="min-w-0">
-                        <div style={anim(0)}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-bg-card mb-7 shadow-sm max-w-full">
+                        <div
+                            className="gsap-reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-bg-card mb-7 shadow-sm max-w-full"
+                        >
                             <span className="relative flex h-2 w-2 shrink-0">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -62,30 +95,31 @@ export function Hero() {
                             <span className="t-label text-fg-2 truncate">Available · Open to relocate</span>
                         </div>
 
-                        <h1 style={anim(80)} className="overflow-hidden">
-                            <span className="t-display block text-fg break-words">{contact.firstName}</span>
-                            <span className="t-display block break-words" style={{ color: "var(--accent)" }}>
+                        <h1 className="overflow-hidden gsap-reveal leading-none">
+                            <span className="t-display block text-fg">{contact.firstName}</span>
+                            <span className="t-display block" style={{ color: "var(--accent)" }}>
                                 {contact.lastName}
                             </span>
                         </h1>
 
-                        <p style={anim(160)} className="mt-5 text-lg sm:text-xl font-bold text-fg-2 leading-snug">
-                            Full Stack Developer{" "}
+                        <p className="gsap-reveal mt-5 text-lg sm:text-xl font-bold text-fg-2 leading-snug">
+                            {contact.title}{" "}
                             <span className="text-fg-3 font-normal">&amp;</span>{" "}
-                            Technical Lead
+                            Cross-Platform Engineer
                             <span className="block text-sm font-normal text-fg-3 mt-1">
-                                Laravel · React JS · MySQL · REST API · 4 Years
+                                Flutter · React.js · Electron.js ·Node.js · 2+ Years
                             </span>
                         </p>
 
-                        <p style={anim(240)} className="mt-5 text-[15px] text-fg-2 leading-relaxed max-w-lg">
-                            I build production ERP, CRM, and SaaS applications end-to-end — owning API
-                            architecture, database design, React dashboards, and CI/CD pipelines. Currently
-                            leading a team of 4 developers at Webtrendz Technologies.
+                        <p className="gsap-reveal mt-5 text-[15px] text-fg-2 leading-relaxed max-w-lg">
+                            I design and ship scalable cross-platform systems across mobile (Flutter),
+                            web (React.js), desktop (Electron.js), and serverless backends (Node.js/Laravel).
+                            Published researcher in deep-learning-based EEG emotion classification.
                         </p>
 
-                        <div style={anim(320)} className="mt-7 flex flex-wrap items-center gap-3">
-                            <a href="#projects"
+                        <div className="gsap-reveal mt-7 flex flex-wrap items-center gap-3">
+                            <a
+                                href="#projects"
                                 onClick={e => {
                                     e.preventDefault();
                                     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
@@ -95,7 +129,8 @@ export function Hero() {
                                 See My Work <span aria-hidden>→</span>
                             </a>
 
-                            <a href="#contact"
+                            <a
+                                href="#contact"
                                 onClick={e => {
                                     e.preventDefault();
                                     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
@@ -106,12 +141,12 @@ export function Hero() {
                             </a>
                         </div>
 
-                        <p style={anim(400)} className="mt-5 text-xs text-fg-3 font-medium">
+                        <p className="gsap-reveal mt-5 text-xs text-fg-3 font-medium">
                             {contact.location} · {contact.phone}
                         </p>
                     </div>
 
-                    <div style={anim(200)} className="w-full min-w-0">
+                    <div className="w-full min-w-0 gsap-scale-reveal">
                         <div className="rounded-2xl border border-border bg-bg-card overflow-hidden w-full" style={{ boxShadow: "var(--shadow-4)" }} >
                             <div className="px-5 py-5" style={{ background: "var(--accent)" }}>
                                 <div className="flex items-center justify-between mb-1 gap-2 flex-wrap">
@@ -122,10 +157,10 @@ export function Hero() {
                                     </span>
                                 </div>
                                 <p className="font-bold text-white text-base sm:text-lg leading-tight">
-                                    Senior Full Stack Developer
+                                    {contact.title}
                                 </p>
                                 <p className="text-indigo-200 text-sm mt-0.5">
-                                    Webtrendz Technologies · 3 yrs 9 mos
+                                    Webtrendz Technologies · Aug 2024 - Present
                                 </p>
                             </div>
 
@@ -141,9 +176,9 @@ export function Hero() {
                             </div>
 
                             <div className="px-5 py-4 border-t border-border bg-bg-2">
-                                <p className="t-label text-fg-3 mb-2.5">Primary Stack</p>
+                                <p className="t-label text-fg-3 mb-2.5">Primary Core Stack</p>
                                 <div className="flex flex-wrap gap-1.5">
-                                    {["Laravel", "React JS", "MySQL", "Jenkins", "REST API"].map(t => (
+                                    {["Flutter", "React.js", "Electron.js", "Node.js", "Laravel"].map(t => (
                                         <span
                                             key={t}
                                             className="px-2 py-0.5 text-xs font-semibold rounded-md bg-accent-t text-accent border border-accent/20"
@@ -160,7 +195,7 @@ export function Hero() {
 
             <Marquee />
 
-            <div style={anim(600)} className="flex justify-center mt-10 mb-4">
+            <div className="gsap-reveal flex justify-center mt-10 mb-4">
                 <div className="flex flex-col items-center gap-1.5">
                     <div className="w-5 h-8 rounded-full border-2 border-border flex items-start justify-center p-1">
                         <div className="w-1 h-2 rounded-full bg-fg-3 animate-bounce" />
