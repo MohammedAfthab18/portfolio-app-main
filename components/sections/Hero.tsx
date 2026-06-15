@@ -107,7 +107,7 @@ export function Hero() {
                             <span className="text-fg-3 font-normal">&amp;</span>{" "}
                             Cross-Platform Engineer
                             <span className="block text-sm font-normal text-fg-3 mt-1">
-                                Flutter · React.js · Electron.js · Serverless · 2+ Years
+                                Flutter · React.js · Electron.js · Node.js · 2+ Years
                             </span>
                         </p>
 
